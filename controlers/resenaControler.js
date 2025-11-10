@@ -2,7 +2,7 @@ const Resena = require('../models/Resena')
 //Crear reseña
 exports.crearResena = async (req, res) => {
     try{
-        const nuevoResena = new Resena(req,body)
+        const nuevoResena = new Resena(req.body)
         await nuevoResena.save();
         res.status(201).json(nuevoResena)
     } catch (error){

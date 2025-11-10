@@ -9,7 +9,7 @@ const Juego = require('../models/Juego')
 // C - Crear juego
 exports.crearJuego = async (req, res) => {
     try{
-        const nuevoJuego = new Juego(req,body)
+        const nuevoJuego = new Juego(req.body)
         await nuevoJuego.save();
         res.status(201).json(nuevoJuego)
     } catch (error){
@@ -24,7 +24,7 @@ exports.crearJuego = async (req, res) => {
 exports.obtenerJuegos = async (req,res) => {
     try{
         const juegos = await Juego.find();
-        req.status(201).json(juegos);
+        res.status(201).json(juegos);
     } catch (error){
         res.status(500).json({ error: 'Error al encontrar juego'})
     }
@@ -50,7 +50,7 @@ exports.obtenerJuegoPorId = async (req,res) => {
 
 exports.actualizarJuego = async (req,res) => {
     try{
-        const juego = await Juego.findByIdAndUpdate(req.params.id, req.doy,{
+        const juego = await Juego.findByIdAndUpdate(req.params.id, req.body,{
             new: true,
             runValidators: true
         })

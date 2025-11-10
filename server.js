@@ -20,11 +20,10 @@ mongoose.connect(MONGODB_URL)
 
 
 //Rutas
-const juegoRoutes = require('./routes/juegoRoute')
-app.use('api/juegos',juegoRoutes)
+app.use('/api/juegos',require('./routes/juegoRoute'))
 
 const resenasRoutes = require('./routes/resenaRoute')
-app.use('api/resenas',resenasRoutes)
+app.use('/api/resenas',resenasRoutes)
 
 app.listen(PORT, () =>{
     console.log(`Servidor Corriendo en http://localhost:${PORT}`)
