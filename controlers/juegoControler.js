@@ -13,7 +13,7 @@ exports.crearJuego = async (req, res) => {
         await nuevoJuego.save();
         res.status(201).json(nuevoJuego)
     } catch (error){
-        req.status(400).json({
+        res.status(400).json({
             error: 'Error al agregar juego. verifique los campos',
             details: error.message
         })
@@ -24,7 +24,7 @@ exports.crearJuego = async (req, res) => {
 exports.obtenerJuegos = async (req,res) => {
     try{
         const juegos = await Juego.find();
-        res.status(201).json(juegos);
+        res.status(200).json(juegos);
     } catch (error){
         res.status(500).json({ error: 'Error al encontrar juego'})
     }
